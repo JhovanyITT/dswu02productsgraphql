@@ -18,6 +18,7 @@ const typeDefs = gql`
     stock: Int!
     creationDate: String
     imgs: [String]
+    facturapiid: String!
   }
 
   type Query {
@@ -33,6 +34,7 @@ const typeDefs = gql`
       brand: String,
       stock: Int,
       imgs: [String]
+      facturapiid: String
     ): Product
 
     updateProduct(
@@ -44,6 +46,7 @@ const typeDefs = gql`
       brand: String,
       stock: Int,
       imgs: [String]
+      facturapiid: String
     ): Product
 
     deleteProduct(_id: ID!): Product
