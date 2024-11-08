@@ -1,18 +1,27 @@
-// src/index.js
 const { ApolloServer } = require('apollo-server');
 const mongoose = require('mongoose');
-const typeDefs = require('./schemas/productSchema');
-const resolvers = require('./resolvers/productResolver');
+const { mergeTypeDefs, mergeResolvers } = require('@graphql-tools/merge'); 
+
+
+// Product
+const productTypeDefs = require('./schemas/productSchema');
+const productResolvers = require('./resolvers/productResolver');
+
+// User
+const userTypeDefs = require('./schemas/userSchema');
+const userResolvers = require('./resolvers/userResolver');
+
+// Merge
+const typeDefs = mergeTypeDefs([productTypeDefs, userTypeDefs]);
+const resolvers = mergeResolvers([productResolvers, userResolvers]);
 
 const startServer = async () => {
-  // Conectar a MongoDB
-  await mongoose.connect('mongodb+srv://iarjona:Isarca2010X@clusterisarvi.7txs2.mongodb.net/?retryWrites=true&w=majority&appName=ClusterIsarvi');
-  
-  const server = new ApolloServer({ typeDefs, resolvers });
-  
-  server.listen().then(({ url }) => {
-    console.log(`Servidor corriendo en ${url}`);
-  });
-};
+    await mongoose.connect('mongodb+srv://jhgajaimefe:ENKaxGskmZePM2M@jhovanycluster.r32tu.mongodb.net/?retryWrites=true&w=majority&appName=JhovanyCluster');
+    const server = new ApolloServer({ typeDefs, resolvers });
+
+    server.listen().then(({ url }) => {
+        console.log(`Servidor corriendo en ${url}`);
+    });
+}
 
 startServer();
