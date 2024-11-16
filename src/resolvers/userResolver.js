@@ -3,8 +3,8 @@ const userService = require('../services/userService');
 
 const resolvers = {
     Query: {
-        users: async () => await userService.getAllUsers(),
-        user: async () => await userService.getUserById(_id),
+        getAllUsers: async () => await userService.getAllUsers(),
+        userById: async () => await userService.getUserById(_id),
     },
     Mutation: {
         createUser: async (_, args) => await userService.createUser(args),

@@ -11,12 +11,16 @@ const productResolvers = require('./resolvers/productResolver');
 const userTypeDefs = require('./schemas/userSchema');
 const userResolvers = require('./resolvers/userResolver');
 
+// Shopping Cart
+const shoppingCartTypeDefs = require('./schemas/shoppingCartSchema');
+const shoppingCartResolvers = require('./resolvers/shoppingCartResolver');
+
 // Merge
-const typeDefs = mergeTypeDefs([productTypeDefs, userTypeDefs]);
-const resolvers = mergeResolvers([productResolvers, userResolvers]);
+const typeDefs = mergeTypeDefs([productTypeDefs, userTypeDefs, shoppingCartTypeDefs]);
+const resolvers = mergeResolvers([productResolvers, userResolvers, shoppingCartResolvers]);
 
 const startServer = async () => {
-    await mongoose.connect('mongodb+srv://jhgajaimefe:ENKaxGskmZePM2M@jhovanycluster.r32tu.mongodb.net/?retryWrites=true&w=majority&appName=JhovanyCluster');
+    await mongoose.connect('CONNECTION-MONGO-URL');
     const server = new ApolloServer({ typeDefs, resolvers });
 
     server.listen().then(({ url }) => {

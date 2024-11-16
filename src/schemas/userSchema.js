@@ -38,8 +38,8 @@ const typeDefs = gql`
     }
 
     type Query {
-        users: [User]!
-        user(_id: ID!): User
+        getAllUsers: [User]!
+        userById(_id: ID!): User
     }
 
     type Mutation {

@@ -1,4 +1,4 @@
-const User = require('../models/userSchema');
+const User = require('../models/userModel');
 const facturapi = require('../apis/Facturapi/user')
 
 module.exports = {

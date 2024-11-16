@@ -2,7 +2,7 @@ const productService = require('../services/productService');
 
 const resolvers = {
   Query: {
-    products: async () => await productService.getProducts(),
+    getProducts: async () => await productService.getProducts(),
   },
   Mutation: {
     createProduct: async (_, args) => await productService.createProduct(args),

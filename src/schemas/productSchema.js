@@ -22,7 +22,7 @@ const typeDefs = gql`
   }
 
   type Query {
-    products: [Product]
+    getProducts: [Product]
   }
 
   type Mutation {
