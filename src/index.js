@@ -1,5 +1,6 @@
 const { ApolloServer } = require('apollo-server');
 const mongoose = require('mongoose');
+const mongooseTorres = require('mongoose');
 const { mergeTypeDefs, mergeResolvers } = require('@graphql-tools/merge'); 
 
 
@@ -21,6 +22,7 @@ const resolvers = mergeResolvers([productResolvers, userResolvers, shoppingCartR
 
 const startServer = async () => {
     await mongoose.connect('CONNECTION-MONGO-URL');
+    await mongooseTorres.connect('mongodb+srv://jacatorresre:admin@cluster0.4bnuo.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0');
     const server = new ApolloServer({ typeDefs, resolvers });
 
     server.listen().then(({ url }) => {
