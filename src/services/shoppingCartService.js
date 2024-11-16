@@ -68,7 +68,7 @@ module.exports = {
   },
 
   closeShoppingCart: async (cartId) => {
-    const cart = await ShoppingCart.findById(cartId).populate('product'); // Asegúrate de poblar los productos
+    const cart = await ShoppingCart.findById(cartId);
     if (cart) {
       cart.status = 'INACTIVE';
       cart.endDate = new Date();
